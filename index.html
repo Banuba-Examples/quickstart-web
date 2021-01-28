@@ -16,6 +16,10 @@
       <h2>Select an effect:</h2>
       <button class="ui button" id="reset">Reset</button>
       <div id="effects"></div>
+      <div class="ui toggle checkbox">
+        <input type="checkbox" id="good_face_search">
+        <label>Accurate face search</label>
+      </div>
     </header>
 
     <main>
@@ -104,6 +108,15 @@
           btn.removeClass("loading")
         })
         $("#reset").on("click", () => player.clearEffect())
+
+        $("#good_face_search").on("click", (e) => {
+          if ($(e.target).is(':checked')) {
+            player.setFaceSearchingMode("good")
+          } else {
+            player.setFaceSearchingMode("good_for_first_face")
+          }
+        })
+
         //#endregion
 
         //#region volume
